@@ -1,13 +1,10 @@
 import axios from "axios";
 import type { GetStaticProps, NextPage } from "next";
 import { fetchAllProducts } from "../services/fake_products_api";
-import Head from "next/head";
-import Image from "next/image";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import { Checkout } from "../components/cart/Checkout";
 import Shop from "../components/shop/Shop";
 import styles from "../styles/Home.module.css";
-import fetcher from "../utils/fetcher";
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient();

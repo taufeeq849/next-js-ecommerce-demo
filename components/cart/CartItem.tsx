@@ -17,6 +17,8 @@ export const CartItem = (product: CartItemProps) => {
       <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
         <Image
           src={image}
+          width={200}
+          height={200}
           alt="product image"
           className="w-full h-full object-center object-cover"
         />

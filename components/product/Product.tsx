@@ -43,7 +43,9 @@ export function Product(props: ProductProps) {
     <div className="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
       <div className="overflow-x-hidden rounded-2xl relative">
         <Image
-          className="h-40 rounded-2xl w-full object-cover"
+          width={200}
+          height={200}
+          className="rounded-2xl w-full object-cover"
           src={props.product.image}
           alt="product image"
         />
