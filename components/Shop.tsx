@@ -2,24 +2,15 @@ import React, { useState } from "react";
 import { IProduct } from "./Product";
 //@ts-ignore
 import Product from "./Product";
-import { useQuery } from "react-query";
+import { dehydrate, QueryClient, useQuery } from "react-query";
 import fetcher from "../utils/fetcher";
-
-export default function Shop() {
+import { GetStaticProps } from "next";
+import axios from "axios";
+interface ShopProps {
+  productData: any;
+}
+export default function Shop(props: ShopProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const { data: products, isLoading, error } = useQuery("allProducts", fetcher);
-  const product: IProduct = {
-    description: "test",
-    category: "test",
-    id: "sdds",
-    image: "sdd",
-    price: 89,
-    title: "test",
-  };
-
-  if (isLoading) return <h1>loading...</h1>;
-  if (error) return <h1> error...</h1>;
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -65,65 +56,19 @@ export default function Shop() {
             </form>
           </div>
 
-          {/* Filters */}
-          <div className="mb-4 border-b border-gray-200">
-            <ul className="text-sm font-medium flex flex-nowrap -mx-4 sm:-mx-6 lg:-mx-8 overflow-x-scroll no-scrollbar">
-              <li className="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a className="text-indigo-500 whitespace-nowrap" href="#0">
-                  View All
-                </a>
-              </li>
-              <li className="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a
-                  className="text-gray-500 hover:text-gray-600 whitespace-nowrap"
-                  href="#0"
-                >
-                  Courses
-                </a>
-              </li>
-              <li className="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a
-                  className="text-gray-500 hover:text-gray-600 whitespace-nowrap"
-                  href="#0"
-                >
-                  Digital Goods
-                </a>
-              </li>
-              <li className="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a
-                  className="text-gray-500 hover:text-gray-600 whitespace-nowrap"
-                  href="#0"
-                >
-                  Online Events
-                </a>
-              </li>
-              <li className="pb-3 mr-6 last:mr-0 first:pl-4 sm:first:pl-6 lg:first:pl-8 last:pr-4 sm:last:pr-6 lg:last:pr-8">
-                <a
-                  className="text-gray-500 hover:text-gray-600 whitespace-nowrap"
-                  href="#0"
-                >
-                  Crowdfunding
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Page content */}
-          <div>
-            {/* Cards 1 (Video Courses) */}
-            <div className="mt-8">
-              {products.map((singleProduct: any) => {
-                const product: IProduct = {
-                  id: singleProduct.id,
-                  category: singleProduct.category,
-                  description: singleProduct.description,
-                  image: singleProduct.image,
-                  price: singleProduct.price,
-                  title: singleProduct.title,
-                };
-                return <Product product={product} />;
-              })}
-            </div>
+          {/* Cards 1 (Video Courses) */}
+          <div className="relative m-3 flex flex-wrap mx-auto justify-center">
+            {props.productData.map((singleProduct: IProduct) => {
+              const product: IProduct = {
+                id: singleProduct.id,
+                category: singleProduct.category,
+                description: singleProduct.description,
+                image: singleProduct.image,
+                price: singleProduct.price,
+                title: singleProduct.title,
+              };
+              return <Product product={product} />;
+            })}
           </div>
         </div>
       </div>

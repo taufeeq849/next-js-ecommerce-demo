@@ -1,3 +1,4 @@
 const toJSON = (_: Response) => _.json();
-const fetcher = () => fetch("https://fakestoreapi.com/products").then(toJSON);
+//TODO replace with env
+const fetcher = (url: string) => fetch(url).then(toJSON);
 export default fetcher;
