@@ -1,6 +1,6 @@
 import { IProduct } from "../../types/product";
 import { useCart } from "../cart/hooks/useCart";
-
+import Image from "next/image";
 interface ProductProps {
   product: IProduct;
 }
@@ -42,9 +42,10 @@ export function Product(props: ProductProps) {
   return (
     <div className="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer">
       <div className="overflow-x-hidden rounded-2xl relative">
-        <img
+        <Image
           className="h-40 rounded-2xl w-full object-cover"
           src={props.product.image}
+          alt="product image"
         />
         <button onClick={addToCart}>
           <p className="absolute right-2 top-2 bg-white rounded-full p-2 cursor-pointer group">
