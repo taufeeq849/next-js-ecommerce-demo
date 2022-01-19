@@ -1,14 +1,13 @@
 import axios from "axios";
 import type { GetStaticProps, NextPage } from "next";
+import { fetchAllProducts } from "../services/fake_products_api";
 import Head from "next/head";
 import Image from "next/image";
 import { dehydrate, QueryClient, useQuery } from "react-query";
-import { IProduct, Product } from "../components/Product";
-import Shop from "../components/Shop";
+import { Checkout } from "../components/cart/Checkout";
+import Shop from "../components/shop/Shop";
 import styles from "../styles/Home.module.css";
 import fetcher from "../utils/fetcher";
-const fetchAllProducts = () =>
-  axios.get("https://fakestoreapi.com/products").then(({ data }) => data);
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient();
@@ -29,6 +28,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <Shop productData={productData} />
+        <Checkout />
       </main>
     </div>
   );
