@@ -38,7 +38,7 @@ export default function Shop(props: ShopProps) {
                 price: singleProduct.price,
                 title: singleProduct.title,
               };
-              return <Product product={product} />;
+              return <Product key={product.id} product={product} />;
             })}
           </div>
         </div>
