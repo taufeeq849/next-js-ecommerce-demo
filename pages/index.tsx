@@ -25,14 +25,15 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Taufeeq Ecommerce demo </title>
-        <meta property="og:title" content="Ecommerce Demo" key="title" />
-      </Head>
-      <Head>
         <meta
           property="og:title"
-          content="Ecommerce demo for the bra's of houghton"
+          content="Next.js ecommerce demo"
           key="title"
+        />
+        <meta
+          property="og:description"
+          content="Ecommerce demo build with Next for the houghton boi's"
+          key="description"
         />
       </Head>
       <main className={styles.main}>
