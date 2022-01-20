@@ -3,7 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { CartItems } from "./CartItems";
 import { useCart } from "./hooks/useCart";
-//import { useCheckout } from "./hooks/useCheckout";
 
 export const Checkout = () => {
   const {
@@ -69,7 +68,7 @@ export const Checkout = () => {
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Total: </p>
-                      <p>${totalPrice} </p>
+                      <p>${totalPrice.toFixed(2)} </p>
                     </div>
 
                     <div className="mt-6">

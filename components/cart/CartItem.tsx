@@ -20,7 +20,7 @@ export const CartItem = (product: CartItemProps) => {
           width={200}
           height={200}
           alt="product image"
-          className="w-full h-full object-center object-cover"
+          className="w-full h-full object-center object-fit"
         />
       </div>
       <div className="ml-4 flex-1 flex flex-col">
