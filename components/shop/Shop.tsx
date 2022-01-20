@@ -2,7 +2,6 @@ import React, { useState } from "react";
 //@ts-ignore
 import Product from "../product/Product";
 import { dehydrate, QueryClient, useQuery } from "react-query";
-import fetcher from "../../utils/fetcher";
 import { GetStaticProps } from "next";
 import axios from "axios";
 import { IProduct } from "../../types/product";
