@@ -25,6 +25,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
+        <title>Next.js ecommerce</title>
         <meta
           property="og:title"
           content="Next.js ecommerce demo"
